@@ -1,15 +1,27 @@
-import React from 'react';
-import { Router, Scene, Stack } from 'react-native-router-flux';
+import { createStackNavigator } from 'react-navigation';
+import WelcomePage from './pages/WelcomePage';
+import FormLogin from './pages/FormLogin';
+import FormCadastro from './pages/FormCadastro';
 
-import FormLogin from './components/FormLogin';
-import FormCadastro from './components/FormCadastro';
-//import CustomNavBar from './components/CustomNavBar';
+const Routes = createStackNavigator ({
+    'Welcome': {
+        screen: WelcomePage,
+        navigationOptions: {
+            header: null,
+        }
+    },
+    'FormLogin': {
+        screen: FormLogin,
+        navigationOptions: {
+            header: null
+        }
+    },
+    'FormCadastro': {
+        screen: FormCadastro,
+        navigationOptions: {
+            headerTransparent: true
+        },
+    }
+})
 
-export default props => (
-    <Router>
-        <Stack key="root">
-        <Scene key='formLogin' component={FormLogin} title="Login" hideNavBar />
-        <Scene key='formCadastro' component={FormCadastro} title="Cadastro" />
-        </Stack>
-    </Router>
-);
+export default Routes;
